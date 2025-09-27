@@ -311,18 +311,20 @@ button:focus {
   box-shadow: 0 20px 45px rgba(26, 26, 26, 0.15);
 }
 
-.quiz-card fieldset {
-  border: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
-}
-
-.quiz-card legend {
+.quiz-progress {
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--rojo-torero);
+  margin-bottom: 1rem;
 }
 
-.quiz-card label {
+#question-text {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.quiz-option {
   display: block;
   margin-bottom: 0.5rem;
   background: rgba(245, 197, 66, 0.15);
@@ -332,11 +334,11 @@ button:focus {
   transition: transform 0.15s ease, background 0.15s ease;
 }
 
-.quiz-card input[type="radio"] {
+.quiz-option input[type="radio"] {
   margin-right: 0.5rem;
 }
 
-.quiz-card label:hover {
+.quiz-option:hover {
   transform: translateX(4px);
   background: rgba(245, 197, 66, 0.3);
 }
@@ -354,6 +356,48 @@ button:focus {
   color: #a53100;
 }
 
+.hint-button,
+.next-button {
+  margin-top: 0.75rem;
+}
+
+.hint-button {
+  background: rgba(179, 0, 27, 0.15);
+  color: var(--rojo-torero);
+  border: 2px dashed var(--rojo-torero);
+}
+
+.hint-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hint-text {
+  margin: 0.5rem 0 0;
+  font-style: italic;
+  color: #633200;
+  background: rgba(245, 197, 66, 0.2);
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+}
+
+.error-log {
+  margin-top: 1.5rem;
+  background: rgba(179, 0, 27, 0.08);
+  border-radius: 14px;
+  padding: 1rem;
+  font-size: 0.95rem;
+}
+
+.error-log ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.error-log li {
+  margin-bottom: 0.35rem;
+}
+
 .secret-date {
   margin-top: 1.5rem;
   padding: 1rem 1.25rem;
@@ -363,7 +407,27 @@ button:focus {
   font-size: 1.3rem;
   font-weight: 700;
   text-align: center;
+}
+
+.secret-date[hidden] {
   display: none;
+}
+
+.confetti {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
+}
+
+.quiz-completed {
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 footer {
