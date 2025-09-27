@@ -197,50 +197,23 @@
             Si fallas, el toro se nos escapa a otra casa.
           </p>
           <div class="quiz-card">
-            <form id="quiz-form">
-              <fieldset>
-                <legend>1. ¿Cómo se llama el pase que Rome inventó tras sacar al toro del salón?</legend>
-                <label><input type="radio" name="q1" value="a" />El "Netflix y capote"</label>
-                <label><input type="radio" name="q1" value="b" />El "Paso del salmorejo a dos manos"</label>
-                <label><input type="radio" name="q1" value="c" />El "TikTok embestido"</label>
-                <p class="feedback" aria-live="polite"></p>
-              </fieldset>
-
-              <fieldset>
-                <legend>2. ¿Qué herramienta secreta usamos para convencer al toro de que saliera?</legend>
-                <label><input type="radio" name="q2" value="a" />Una batería de cocina a ritmo de reggaetón</label>
-                <label><input type="radio" name="q2" value="b" />Un mando de PlayStation con vibración taurina</label>
-                <label><input type="radio" name="q2" value="c" />Un plato de espinacas con jamón y un "ole" en falsete</label>
-                <p class="feedback" aria-live="polite"></p>
-              </fieldset>
-
-              <fieldset>
-                <legend>3. ¿Qué incluye la tarifa "Toro Uber"?</legend>
-                <label><input type="radio" name="q3" value="a" />Casco con cuernos de repuesto y playlist pasodoblera</label>
-                <label><input type="radio" name="q3" value="b" />GPS integrado en los cuernos y un podcast motivacional</label>
-                <label><input type="radio" name="q3" value="c" />Servicio de karaoke con el toro como jurado</label>
-                <p class="feedback" aria-live="polite"></p>
-              </fieldset>
-
-              <fieldset>
-                <legend>4. ¿Dónde organizamos la próxima capea corporativa?</legend>
-                <label><input type="radio" name="q4" value="a" />En la sala de juntas de la comunidad de vecinos</label>
-                <label><input type="radio" name="q4" value="b" />En la azotea del Ayuntamiento con DJ</label>
-                <label><input type="radio" name="q4" value="c" />En una pista de pádel convertida en plaza portátil</label>
-                <p class="feedback" aria-live="polite"></p>
-              </fieldset>
-
-              <fieldset>
-                <legend>5. ¿Qué haremos justo después de revelar la fecha?</legend>
-                <label><input type="radio" name="q5" value="a" />Correr delante de un toro holográfico</label>
-                <label><input type="radio" name="q5" value="b" />Brindar con rebujito y gritar "¡Rome se casa!"</label>
-                <label><input type="radio" name="q5" value="c" />Enviar curriculum a los toros para que nos contraten</label>
-                <p class="feedback" aria-live="polite"></p>
-              </fieldset>
-
-              <button type="submit">Enviar respuestas</button>
-              <div class="secret-date" aria-live="polite"></div>
-            </form>
+            <div id="quiz-app">
+              <div class="quiz-progress" aria-live="polite">
+                Pase <span id="question-number">1</span> de <span id="total-questions">5</span>
+              </div>
+              <h3 id="question-text"></h3>
+              <form id="quiz-form">
+                <div id="options-container" role="radiogroup" aria-labelledby="question-text"></div>
+                <p class="feedback" id="feedback" aria-live="polite"></p>
+                <button type="button" id="hint-button" class="hint-button" hidden>Necesito una pista</button>
+                <p class="hint-text" id="hint-text" hidden></p>
+                <button type="button" id="next-button" class="next-button" disabled>
+                  Comprobar pase
+                </button>
+              </form>
+              <div class="error-log" id="error-log" aria-live="polite"></div>
+              <div class="secret-date" id="secret-date" aria-live="polite" hidden></div>
+            </div>
           </div>
         </div>
       </section>
