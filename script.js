@@ -5,6 +5,29 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
+const diwoMessage = document.getElementById("diwo-message");
+
+if (diwoMessage) {
+  const diwoMessages = [
+    "yamilet no te vayas",
+    "caida de roma",
+    "dameApi",
+    "15 instalaciones de Emooc",
+    "buen curro",
+    "nowena",
+  ];
+
+  let currentMessageIndex = 0;
+
+  const renderDiwoMessage = () => {
+    diwoMessage.textContent = diwoMessages[currentMessageIndex];
+    currentMessageIndex = (currentMessageIndex + 1) % diwoMessages.length;
+  };
+
+  renderDiwoMessage();
+  setInterval(renderDiwoMessage, 5000);
+}
+
 if (quizApp) {
   const questions = [
     {

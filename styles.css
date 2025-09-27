@@ -446,6 +446,73 @@ footer a {
   text-decoration: none;
 }
 
+.diwo-chatbot {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: min(320px, 90vw);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(26, 26, 26, 0.2);
+  border: 2px solid rgba(179, 0, 27, 0.15);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.diwo-chatbot__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(179, 0, 27, 0.9), rgba(245, 197, 66, 0.85));
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.diwo-chatbot__avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 1.1rem;
+}
+
+.diwo-chatbot__body {
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.diwo-chatbot__message {
+  margin: 0;
+  font-weight: 600;
+  color: var(--negro-tela);
+  animation: diwo-fade 0.6s ease;
+}
+
+@keyframes diwo-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .diwo-chatbot {
+    right: 1rem;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
 @media (max-width: 720px) {
   nav ul {
     display: none;
