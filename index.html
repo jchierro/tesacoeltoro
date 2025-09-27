@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tesaco El Toro</title>
+    <meta
+      name="description"
+      content="Sitio web de Tesaco El Toro, un espacio para compartir proyectos y aprendizajes."
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f4f6fb;
+        --bg-dark: #121212;
+        --fg: #1f2933;
+        --fg-dark: #e5e7eb;
+        --accent: #ff7a59;
+        --accent-dark: #ffb347;
+        --shadow: 0 20px 35px rgba(31, 41, 51, 0.12);
+        --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.35);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: var(--bg-dark);
+          color: var(--fg-dark);
+        }
+
+        .card {
+          background: rgba(33, 33, 33, 0.72);
+          backdrop-filter: blur(18px);
+          box-shadow: var(--shadow-dark);
+        }
+
+        .button-primary {
+          background: var(--accent-dark);
+          color: #1f1300;
+        }
+
+        .button-secondary {
+          border-color: rgba(229, 231, 235, 0.6);
+          color: var(--fg-dark);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 3rem 1.5rem;
+        background: radial-gradient(circle at top, rgba(255, 122, 89, 0.12), transparent 55%),
+          var(--bg);
+        color: var(--fg);
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+          "Helvetica Neue", sans-serif;
+        line-height: 1.6;
+      }
+
+      main {
+        max-width: 720px;
+        width: 100%;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        transition: transform 200ms ease, box-shadow 200ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 28px 48px rgba(31, 41, 51, 0.18);
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 0 0 1.5rem;
+        font-size: 1.05rem;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.8rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+      }
+
+      .button-primary {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 18px 28px rgba(255, 122, 89, 0.35);
+      }
+
+      .button-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 36px rgba(255, 122, 89, 0.45);
+      }
+
+      .button-secondary {
+        border: 2px solid rgba(31, 41, 51, 0.2);
+        color: inherit;
+        background: transparent;
+      }
+
+      .button-secondary:hover {
+        transform: translateY(-2px);
+        border-color: rgba(31, 41, 51, 0.35);
+      }
+
+      footer {
+        margin-top: 2.5rem;
+        font-size: 0.85rem;
+        color: rgba(31, 41, 51, 0.65);
+        text-align: center;
+      }
+
+      footer a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <h1>Hola, soy Tesaco El Toro</h1>
+        <p>
+          Bienvenido a mi rincón en la web. Aquí encontrarás notas, proyectos, experimentos y
+          aprendizajes relacionados con desarrollo de software, tecnología y otras curiosidades
+          que me apasionan.
+        </p>
+        <p>
+          Este sitio está en construcción, pero pronto compartiré contenido útil y algunas ideas
+          en las que estoy trabajando. Mientras tanto, si quieres ponerte en contacto o seguir mi
+          trabajo, aquí tienes algunos enlaces útiles.
+        </p>
+        <div class="button-row">
+          <a class="button button-primary" href="mailto:tesaco@example.com">
+            Escribe un correo
+          </a>
+          <a class="button button-secondary" href="https://github.com/tesacoeltoro">
+            GitHub
+          </a>
+        </div>
+        <footer>
+          <span>© <span id="year"></span> Tesaco El Toro. Hecho con cariño y un poco de café.</span>
+        </footer>
+      </section>
+    </main>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
