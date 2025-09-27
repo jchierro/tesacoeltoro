@@ -3,196 +3,250 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tesaco El Toro</title>
+    <title>Tesaco el Toro | Capeas, rescates y desmadres con arte</title>
     <meta
       name="description"
-      content="Sitio web de Tesaco El Toro, un espacio para compartir proyectos y aprendizajes."
+      content="Tesaco el Toro, especialistas en sacar toros de casas, organizar capeas absurdas y preparar la despedida más brava para Rome."
     />
-    <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #f4f6fb;
-        --bg-dark: #121212;
-        --fg: #1f2933;
-        --fg-dark: #e5e7eb;
-        --accent: #ff7a59;
-        --accent-dark: #ffb347;
-        --shadow: 0 20px 35px rgba(31, 41, 51, 0.12);
-        --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.35);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        body {
-          background: var(--bg-dark);
-          color: var(--fg-dark);
-        }
-
-        .card {
-          background: rgba(33, 33, 33, 0.72);
-          backdrop-filter: blur(18px);
-          box-shadow: var(--shadow-dark);
-        }
-
-        .button-primary {
-          background: var(--accent-dark);
-          color: #1f1300;
-        }
-
-        .button-secondary {
-          border-color: rgba(229, 231, 235, 0.6);
-          color: var(--fg-dark);
-        }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 3rem 1.5rem;
-        background: radial-gradient(circle at top, rgba(255, 122, 89, 0.12), transparent 55%),
-          var(--bg);
-        color: var(--fg);
-        font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
-          "Helvetica Neue", sans-serif;
-        line-height: 1.6;
-      }
-
-      main {
-        max-width: 720px;
-        width: 100%;
-      }
-
-      .logo {
-        display: block;
-        width: 96px;
-        height: auto;
-        margin: 0 auto 1.75rem;
-        filter: drop-shadow(0 12px 24px rgba(255, 122, 89, 0.28));
-      }
-
-      @media (max-width: 480px) {
-        .logo {
-          width: 80px;
-        }
-      }
-
-      .card {
-        background: rgba(255, 255, 255, 0.88);
-        border-radius: 24px;
-        padding: 3rem;
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        transition: transform 200ms ease, box-shadow 200ms ease;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 28px 48px rgba(31, 41, 51, 0.18);
-      }
-
-      h1 {
-        margin: 0 0 1rem;
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
-        letter-spacing: -0.02em;
-      }
-
-      p {
-        margin: 0 0 1.5rem;
-        font-size: 1.05rem;
-      }
-
-      .button-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.85rem 1.8rem;
-        border-radius: 999px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        text-decoration: none;
-        transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
-      }
-
-      .button-primary {
-        background: var(--accent);
-        color: white;
-        box-shadow: 0 18px 28px rgba(255, 122, 89, 0.35);
-      }
-
-      .button-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 24px 36px rgba(255, 122, 89, 0.45);
-      }
-
-      .button-secondary {
-        border: 2px solid rgba(31, 41, 51, 0.2);
-        color: inherit;
-        background: transparent;
-      }
-
-      .button-secondary:hover {
-        transform: translateY(-2px);
-        border-color: rgba(31, 41, 51, 0.35);
-      }
-
-      footer {
-        margin-top: 2.5rem;
-        font-size: 0.85rem;
-        color: rgba(31, 41, 51, 0.65);
-        text-align: center;
-      }
-
-      footer a {
-        color: inherit;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
-      <section class="card">
-        <img
-          class="logo"
-          alt="Tesaco El Toro"
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmY3YTU5IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmIzNDciIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSJ1cmwoI2dyYWQpIiAvPgogIDxwYXRoIGQ9Ik0zMiA4MiBMNDQgMzggSDU4IEw1MCA3MCBINzAgTDYyIDM4IEg3NiBMODggODIgSDc0IEw2OCA2MCBINTIgTDQ2IDgyIFoiIGZpbGw9IiNmZmYiIC8+Cjwvc3ZnPg=="
-        />
-        <h1>Hola, soy Tesaco El Toro</h1>
-        <p>
-          Bienvenido a mi rincón en la web. Aquí encontrarás notas, proyectos, experimentos y
-          aprendizajes relacionados con desarrollo de software, tecnología y otras curiosidades
-          que me apasionan.
-        </p>
-        <p>
-          Este sitio está en construcción, pero pronto compartiré contenido útil y algunas ideas
-          en las que estoy trabajando. Mientras tanto, si quieres ponerte en contacto o seguir mi
-          trabajo, aquí tienes algunos enlaces útiles.
-        </p>
-        <div class="button-row">
-          <a class="button button-primary" href="mailto:tesaco@example.com">
-            Escribe un correo
-          </a>
-          <a class="button button-secondary" href="https://github.com/tesacoeltoro">
-            GitHub
-          </a>
+    <header id="inicio">
+      <div class="navbar">
+        <div class="brand">
+          <span class="brand-logo" aria-hidden="true">🐂</span>
+          <span>Tesaco el Toro</span>
         </div>
-        <footer>
-          <span>© <span id="year"></span> Tesaco El Toro. Hecho con cariño y un poco de café.</span>
-        </footer>
+        <nav aria-label="Navegación principal">
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#quiz">Quiz Taurino</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>La cuadrilla definitiva contra toros entrometidos</h1>
+        <p>
+          En Tesaco el Toro llevamos la tauromaquia a la oficina, al salón y hasta a la azotea. Todo
+          empezó aquella madrugada en Los Palacios y Villafranca (Sevilla), cuando un morlaco se coló en
+          casa de Rome buscando jamón. Lo sacamos con un capote de lunares, tres sevillanas y una promesa:
+          montar la despedida más brava de la historia el <strong>1 de noviembre</strong>. Pero para saberlo hay
+          que ganárselo en nuestro quiz...
+        </p>
+        <a class="cta-button" href="#quiz">Quiero domar el quiz</a>
+      </section>
+
+      <section id="servicios">
+        <div class="section-inner">
+          <h2 class="section-title">Servicios sin sentido pero con arte</h2>
+          <p class="section-subtitle">
+            No importa si tu problema es un toro, un becerro con ínfulas de influencer o una suegra con
+            cuernos metafóricos. Tenemos un servicio a tu medida (y a la medida del animal).
+          </p>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Desokupación taurina express</h3>
+              <p>
+                Sacamos toros de salones, oficinas open space o coworkings hipsters en menos de 30 minutos o
+                te regalamos un abanico firmado por el propio morlaco.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Capea corporativa premium</h3>
+              <p>
+                Transformamos tu team building en una plaza portátil con barra libre de rebujito y charlas
+                TED Talk sobre cómo dar pases de pecho sin derramar el café.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Toro Uber</h3>
+              <p>
+                Servicio nocturno donde te llevamos a casa montado en toro amaestrado, incluye playlist de
+                pasodobles y casco con cuernos de repuesto.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Decoración "bull chic"</h3>
+              <p>
+                Interiorismo especializado en transformar tu loft en un tablao: cabezas de toro LED,
+                capotes inteligentes y alfombras que embisten si llega la suegra.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Masterclass de burladeros creativos</h3>
+              <p>
+                Aprende con Rome a esconderte detrás de todo: sofás, fotocopiadoras, frigoríficos americanos
+                y hasta del WiFi de los vecinos.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Alquiler de toro holográfico</h3>
+              <p>
+                Para eventos donde no cabe uno real. Ideal para sorprender en bodas, comuniones y reuniones de
+                escalada en rocódromo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria">
+        <div class="section-inner">
+          <h2 class="section-title">Galería de faenas memorables</h2>
+          <p class="section-subtitle">
+            Nuestros fotógrafos capturaron el glamour, el sudor y el brillo dorado de nuestros capotes. Los
+            toros firmaron cesión de imagen.
+          </p>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=60" alt="Torero con capote rojo en una plaza" />
+              <span>Rome practicando el pase "PowerPoint"</span>
+            </figure>
+            <figure class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?auto=format&fit=crop&w=900&q=60" alt="Toro corriendo en la arena" />
+              <span>El toro Uber calentando motores</span>
+            </figure>
+            <figure class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=60" alt="Plaza de toros iluminada" />
+              <span>Montamos esta plaza en un coworking</span>
+            </figure>
+            <figure class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=60" alt="Sombrero de torero sobre capote dorado" />
+              <span>Decoración bull chic edición limitada</span>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="nosotros">
+        <div class="section-inner">
+          <h2 class="section-title">La cuadrilla</h2>
+          <p class="section-subtitle">
+            Somos un equipo de especialistas en todo lo que tenga cuernos, pezuñas o ganas de fiesta. Cada
+            miembro trae su propia locura.
+          </p>
+          <div class="team-grid">
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=60" alt="Retrato de Ana" />
+              <h3>Ana "La Capotera"</h3>
+              <p>Directora creativa, inventora del capote reversible (fiesta por un lado, siesta por el otro).</p>
+            </article>
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=60" alt="Retrato de Miguel" />
+              <h3>Miguel "Timing"</h3>
+              <p>Planificador de capeas. Cronometra los rebujitos, las embestidas y las llamadas de las parejas preocupadas.</p>
+            </article>
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=60" alt="Retrato de Nuria" />
+              <h3>Nuria "Wifi del ruedo"</h3>
+              <p>Responsable de streaming. Retransmite cada capotazo con filtros de brillo y comentarios picantes.</p>
+            </article>
+            <article class="team-card">
+              <img class="team-photo" src="https://images.unsplash.com/photo-1521120098171-4a2c3c5a5b4a?auto=format&fit=crop&w=400&q=60" alt="Retrato de Rome" />
+              <h3>Rome "Novio valiente"</h3>
+              <p>Cliente estrella y jefe de honor. Siempre listo para otra historia de "fue el toro, lo juro".</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="contact-section">
+        <div class="section-inner">
+          <h2 class="section-title">Contacto</h2>
+          <p class="section-subtitle">
+            ¿Quieres contratarnos o contarnos que tienes un toro durmiendo en la bañera? Rellena el formulario
+            y responderemos antes de que se acabe el pasodoble.
+          </p>
+          <form>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre torero" required />
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@ejemplo.com" required />
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos tu embestida" required></textarea>
+
+            <button type="submit">Enviar Olé</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="quiz" class="quiz-section">
+        <div class="section-inner">
+          <h2 class="section-title">Quiz taurino definitivo</h2>
+          <p class="section-subtitle">
+            Cinco preguntas. Cinco pases. Si los das todos, te contamos cuándo montar la despedida de Rome.
+            Si fallas, el toro se nos escapa a otra casa.
+          </p>
+          <div class="quiz-card">
+            <form id="quiz-form">
+              <fieldset>
+                <legend>1. ¿Cómo se llama el pase que Rome inventó tras sacar al toro del salón?</legend>
+                <label><input type="radio" name="q1" value="a" />El "Netflix y capote"</label>
+                <label><input type="radio" name="q1" value="b" />El "Paso del salmorejo a dos manos"</label>
+                <label><input type="radio" name="q1" value="c" />El "TikTok embestido"</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+
+              <fieldset>
+                <legend>2. ¿Qué herramienta secreta usamos para convencer al toro de que saliera?</legend>
+                <label><input type="radio" name="q2" value="a" />Una batería de cocina a ritmo de reggaetón</label>
+                <label><input type="radio" name="q2" value="b" />Un mando de PlayStation con vibración taurina</label>
+                <label><input type="radio" name="q2" value="c" />Un plato de espinacas con jamón y un "ole" en falsete</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+
+              <fieldset>
+                <legend>3. ¿Qué incluye la tarifa "Toro Uber"?</legend>
+                <label><input type="radio" name="q3" value="a" />Casco con cuernos de repuesto y playlist pasodoblera</label>
+                <label><input type="radio" name="q3" value="b" />GPS integrado en los cuernos y un podcast motivacional</label>
+                <label><input type="radio" name="q3" value="c" />Servicio de karaoke con el toro como jurado</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+
+              <fieldset>
+                <legend>4. ¿Dónde organizamos la próxima capea corporativa?</legend>
+                <label><input type="radio" name="q4" value="a" />En la sala de juntas de la comunidad de vecinos</label>
+                <label><input type="radio" name="q4" value="b" />En la azotea del Ayuntamiento con DJ</label>
+                <label><input type="radio" name="q4" value="c" />En una pista de pádel convertida en plaza portátil</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+
+              <fieldset>
+                <legend>5. ¿Qué haremos justo después de revelar la fecha?</legend>
+                <label><input type="radio" name="q5" value="a" />Correr delante de un toro holográfico</label>
+                <label><input type="radio" name="q5" value="b" />Brindar con rebujito y gritar "¡Rome se casa!"</label>
+                <label><input type="radio" name="q5" value="c" />Enviar curriculum a los toros para que nos contraten</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+
+              <button type="submit">Enviar respuestas</button>
+              <div class="secret-date" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+
+    <footer>
+      <p>© <span id="current-year"></span> Tesaco el Toro. Expertos en sacar toros y montar despedidas legendarias.</p>
+      <p>Hecho con arte sevillano y humor picante para Rome.</p>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
