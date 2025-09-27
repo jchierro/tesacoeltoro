@@ -5,9 +5,33 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
-const diwoMessage = document.getElementById("diwo-message");
+const diwoMessagesList = document.getElementById("diwo-messages");
+const diwoChatBody = document.querySelector("#diwo-chatbot .diwo-chatbot__body");
+const diwoChatForm = document.getElementById("diwo-chat-form");
+const diwoChatInput = document.getElementById("diwo-chat-input");
 
-if (diwoMessage) {
+const appendDiwoMessage = (text, author = "bot") => {
+  if (!diwoMessagesList) {
+    return;
+  }
+
+  const messageItem = document.createElement("li");
+  messageItem.classList.add("diwo-chatbot__message");
+  messageItem.classList.add(
+    author === "user" ? "diwo-chatbot__message--user" : "diwo-chatbot__message--bot"
+  );
+
+  const messageText = document.createElement("span");
+  messageText.textContent = text;
+
+  messageItem.appendChild(messageText);
+  diwoMessagesList.appendChild(messageItem);
+
+  const scrollTarget = diwoChatBody ?? diwoMessagesList;
+  scrollTarget.scrollTop = scrollTarget.scrollHeight;
+};
+
+if (diwoMessagesList) {
   const diwoMessages = [
     "yamilet no te vayas",
     "caida de roma",
@@ -20,12 +44,31 @@ if (diwoMessage) {
   let currentMessageIndex = 0;
 
   const renderDiwoMessage = () => {
-    diwoMessage.textContent = diwoMessages[currentMessageIndex];
+    appendDiwoMessage(diwoMessages[currentMessageIndex]);
     currentMessageIndex = (currentMessageIndex + 1) % diwoMessages.length;
   };
 
   renderDiwoMessage();
   setInterval(renderDiwoMessage, 5000);
+}
+
+if (diwoChatForm && diwoChatInput) {
+  diwoChatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const userMessage = diwoChatInput.value.trim();
+    if (!userMessage) {
+      return;
+    }
+
+    appendDiwoMessage(userMessage, "user");
+    diwoChatInput.value = "";
+    diwoChatInput.focus();
+
+    setTimeout(() => {
+      appendDiwoMessage("no se puede orinar en el AVE");
+    }, 500);
+  });
 }
 
 if (quizApp) {
