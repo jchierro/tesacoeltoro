@@ -56,3 +56,26 @@ const yearSpan = document.getElementById("current-year");
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
+
+const diwoMessages = [
+  "yamilet no te vayas",
+  "caida de roma",
+  "dameApi",
+  "15 instalaciones de Emooc",
+  "buen curro",
+  "nowena",
+];
+
+const diwoMessageElement = document.getElementById("diwo-message");
+
+if (diwoMessageElement) {
+  let diwoIndex = 0;
+
+  const rotateMessage = () => {
+    diwoMessageElement.textContent = diwoMessages[diwoIndex];
+    diwoIndex = (diwoIndex + 1) % diwoMessages.length;
+  };
+
+  rotateMessage();
+  setInterval(rotateMessage, 5000);
+}

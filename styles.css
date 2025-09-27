@@ -382,6 +382,51 @@ footer a {
   text-decoration: none;
 }
 
+.diwo-chatbot {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: min(280px, 90vw);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 18px 35px rgba(26, 26, 26, 0.25);
+  border: 2px solid rgba(179, 0, 27, 0.15);
+  overflow: hidden;
+  font-family: var(--fuente-principal);
+  z-index: 1000;
+}
+
+.diwo-chatbot__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--rojo-torero);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.diwo-chatbot__avatar {
+  font-size: 1.25rem;
+}
+
+.diwo-chatbot__message {
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  color: var(--negro-tela);
+}
+
+@media (max-width: 600px) {
+  .diwo-chatbot {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
 @media (max-width: 720px) {
   nav ul {
     display: none;
