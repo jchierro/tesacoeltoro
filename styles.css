@@ -22,8 +22,18 @@ body {
   line-height: 1.6;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 header {
@@ -43,6 +53,8 @@ header {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.75rem 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -52,6 +64,12 @@ header {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.primary-nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .brand-logo {
@@ -64,15 +82,16 @@ header {
   flex-shrink: 0;
 }
 
-nav ul {
+.primary-nav ul {
   list-style: none;
   display: flex;
   gap: 1rem;
   margin: 0;
   padding: 0;
+  justify-content: flex-end;
 }
 
-nav a {
+.primary-nav a {
   text-decoration: none;
   font-weight: 600;
   color: white;
@@ -81,10 +100,75 @@ nav a {
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-nav a:hover,
-nav a:focus {
+.primary-nav a:hover,
+.primary-nav a:focus {
   background: rgba(245, 197, 66, 0.2);
   transform: translateY(-2px);
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.nav-toggle__icon {
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.3s ease, top 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle__icon::before {
+  top: -6px;
+}
+
+.nav-toggle__icon::after {
+  top: 6px;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon {
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before,
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.nav-toggle__label {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 
 .hero {
@@ -599,24 +683,132 @@ footer a {
   }
 }
 
+@keyframes nav-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .navbar {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .hero {
+    padding: 4.5rem 1.5rem 3rem;
+  }
+
+  .section-inner {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 900px) {
+  header {
+    position: sticky;
+  }
+
+  .navbar {
+    align-items: flex-start;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    order: 2;
+  }
+
+  .primary-nav {
+    order: 3;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    background: rgba(26, 26, 26, 0.94);
+    border-radius: 18px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+    justify-content: flex-start;
+  }
+
+  .primary-nav.primary-nav--open {
+    display: flex;
+    animation: nav-fade-in 0.25s ease;
+  }
+
+  .primary-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .primary-nav li + li {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .primary-nav a {
+    display: block;
+    padding: 0.9rem 0.25rem;
+  }
+
+  .hero {
+    text-align: left;
+    padding: 4rem 1.25rem 2.5rem;
+  }
+
+  .hero p {
+    margin: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+
+  .quiz-card,
+  .card,
+  .team-card {
+    padding: 1.5rem;
+  }
+
+  .quiz-card {
+    padding: 1.75rem;
+  }
+}
+
 @media (max-width: 600px) {
+  section {
+    padding: 3.25rem 1.25rem;
+  }
+
+  .hero {
+    padding: 3.5rem 1.25rem 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
   .diwo-chatbot {
     right: 1rem;
     bottom: 1rem;
     width: calc(100% - 2rem);
   }
-}
 
-@media (max-width: 720px) {
-  nav ul {
-    display: none;
-  }
-
-  header {
-    position: static;
-  }
-
-  .hero {
-    padding-top: 3rem;
+  footer {
+    padding: 2rem 1.25rem;
   }
 }
