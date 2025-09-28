@@ -2,6 +2,25 @@ const quizApp = document.querySelector("#quiz-app");
 const yearSpan = document.getElementById("current-year");
 const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.getElementById("primary-nav");
+const contactForm = document.querySelector("#contacto form");
+
+document.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+  alert("chumbazo");
+});
+
+if (contactForm) {
+  contactForm.addEventListener("click", (event) => {
+    if (event.target.matches("input, textarea, button")) {
+      alert("dameFormulario");
+    }
+  });
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    alert("dameFormulario");
+  });
+}
 
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
