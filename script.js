@@ -5,6 +5,13 @@ const primaryNav = document.getElementById("primary-nav");
 const contactForm = document.querySelector("#contacto form");
 const teamToggle = document.querySelector(".team-toggle");
 const teamGrid = document.getElementById("team-grid");
+const diwoChatbot = document.getElementById("diwo-chatbot");
+const diwoChatOpenButton = document.getElementById("diwo-chat-open");
+const diwoChatCloseButton = document.getElementById("diwo-chat-close");
+const diwoMessagesList = document.getElementById("diwo-messages");
+const diwoChatBody = document.querySelector("#diwo-chatbot .diwo-chatbot__body");
+const diwoChatForm = document.getElementById("diwo-chat-form");
+const diwoChatInput = document.getElementById("diwo-chat-input");
 
 document.addEventListener("contextmenu", (event) => {
   event.preventDefault();
@@ -127,10 +134,46 @@ if (teamToggle && teamGrid) {
   });
 }
 
-const diwoMessagesList = document.getElementById("diwo-messages");
-const diwoChatBody = document.querySelector("#diwo-chatbot .diwo-chatbot__body");
-const diwoChatForm = document.getElementById("diwo-chat-form");
-const diwoChatInput = document.getElementById("diwo-chat-input");
+if (diwoChatbot && diwoChatOpenButton) {
+  const setDiwoChatVisibility = (shouldOpen) => {
+    const wasOpen = !diwoChatbot.hidden;
+
+    diwoChatbot.hidden = !shouldOpen;
+    diwoChatbot.setAttribute("aria-hidden", shouldOpen ? "false" : "true");
+
+    diwoChatOpenButton.hidden = shouldOpen;
+    diwoChatOpenButton.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+
+    if (diwoChatCloseButton) {
+      diwoChatCloseButton.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+    }
+
+    if (shouldOpen && !wasOpen && diwoChatInput) {
+      diwoChatInput.focus();
+    }
+  };
+
+  const prefersCollapsed = window.matchMedia("(max-width: 768px)").matches;
+  setDiwoChatVisibility(!prefersCollapsed);
+
+  diwoChatOpenButton.addEventListener("click", () => {
+    setDiwoChatVisibility(true);
+  });
+
+  if (diwoChatCloseButton) {
+    diwoChatCloseButton.addEventListener("click", () => {
+      setDiwoChatVisibility(false);
+      diwoChatOpenButton.focus();
+    });
+  }
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !diwoChatbot.hidden) {
+      setDiwoChatVisibility(false);
+      diwoChatOpenButton.focus();
+    }
+  });
+}
 
 const appendDiwoMessage = (text, author = "bot") => {
   if (!diwoMessagesList) {
