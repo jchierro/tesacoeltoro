@@ -26,6 +26,46 @@ body.no-scroll {
   overflow: hidden;
 }
 
+body.celebration-mode {
+  overflow: hidden;
+}
+
+body.celebration-mode::before,
+body.celebration-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1500;
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+body.celebration-mode::before {
+  background: radial-gradient(circle at 20% 20%, rgba(245, 197, 66, 0.45), transparent 55%),
+    radial-gradient(circle at 80% 35%, rgba(255, 112, 67, 0.35), transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(179, 0, 27, 0.4), transparent 65%);
+  animation: sparkleDrift 18s linear infinite;
+}
+
+body.celebration-mode::after {
+  background: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 0,
+      rgba(255, 255, 255, 0.15) 8px,
+      transparent 8px,
+      transparent 16px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.1) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  animation: shimmer 12s linear infinite;
+}
+
 a {
   color: inherit;
 }
@@ -516,23 +556,121 @@ button:focus {
 }
 
 .secret-date {
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
-  border-radius: 16px;
-  background: linear-gradient(135deg, var(--rojo-torero), var(--dorado-capote));
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  background: radial-gradient(circle at 20% 20%, rgba(245, 197, 66, 0.9), rgba(179, 0, 27, 0.9));
   color: white;
-  font-size: 1.3rem;
-  font-weight: 700;
   text-align: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.35);
+  animation: celebrationFade 0.8s ease-out forwards;
+}
+
+.secret-date--visible {
+  display: flex;
 }
 
 .secret-date[hidden] {
   display: none;
 }
 
+.secret-date__content {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  animation: celebrationPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.secret-date__headline {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 25px rgba(0, 0, 0, 0.45), 0 0 12px rgba(245, 197, 66, 0.85);
+  animation: celebrationGlow 1.6s ease-in-out infinite alternate;
+}
+
+.secret-date__details {
+  margin: 0;
+  font-size: clamp(1.2rem, 3vw, 2.1rem);
+  font-weight: 600;
+  text-shadow: 0 0 14px rgba(0, 0, 0, 0.35);
+}
+
 .confetti {
-  font-size: 1.5rem;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+  animation: confettiSwing 1.6s ease-in-out infinite alternate;
+}
+
+.confetti--reverse {
+  animation-direction: alternate-reverse;
+}
+
+@keyframes celebrationFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes celebrationPop {
+  0% {
+    transform: scale(0.8) rotate(-2deg);
+  }
+  60% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes celebrationGlow {
+  0% {
+    text-shadow: 0 0 12px rgba(245, 197, 66, 0.65), 0 0 30px rgba(179, 0, 27, 0.4);
+  }
+  100% {
+    text-shadow: 0 0 22px rgba(255, 255, 255, 0.85), 0 0 35px rgba(245, 197, 66, 0.9);
+  }
+}
+
+@keyframes confettiSwing {
+  0% {
+    transform: translateY(-10px) rotate(-6deg);
+  }
+  100% {
+    transform: translateY(10px) rotate(6deg);
+  }
+}
+
+@keyframes sparkleDrift {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translate3d(-10%, -10%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(10%, 10%, 0) rotate(360deg);
+  }
 }
 
 .quiz-completed {
