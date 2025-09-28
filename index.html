@@ -27,7 +27,11 @@
           />
           <span>Tesaco el Toro</span>
         </div>
-        <nav aria-label="Navegación principal">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+          <span class="nav-toggle__label">Menú</span>
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Navegación principal">
           <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
