@@ -287,11 +287,21 @@ if (quizApp) {
     hintButton.disabled = true;
 
     secretDate.hidden = false;
-    secretDate.innerHTML =
-      "<span aria-hidden=\"true\" class=\"confetti\">🎉🎺✨</span> " +
-      "¡Triunfo rotundo! La despedida de Rome se celebra el <strong>1 de noviembre</strong>. " +
-      "Ve preparando el traje de luces y el rebujito." +
-      " <span aria-hidden=\"true\" class=\"confetti\">✨🎺🎉</span>";
+    secretDate.classList.add("secret-date--visible");
+    document.body.classList.add("celebration-mode");
+    secretDate.setAttribute("tabindex", "-1");
+    secretDate.innerHTML = `
+      <div class="secret-date__content">
+        <div aria-hidden="true" class="confetti">🎉🎺✨</div>
+        <p class="secret-date__headline">¡Triunfo rotundo!</p>
+        <p class="secret-date__details">
+          La despedida de Rome se celebra el <strong>1 de noviembre</strong>.
+        </p>
+        <p class="secret-date__details">Tendras preparado un traje de luces.</p>
+        <div aria-hidden="true" class="confetti confetti--reverse">✨🎺🎉</div>
+      </div>
+    `;
+    secretDate.focus();
   };
 
   const handleNext = () => {
