@@ -3,6 +3,8 @@ const yearSpan = document.getElementById("current-year");
 const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.getElementById("primary-nav");
 const contactForm = document.querySelector("#contacto form");
+const teamToggle = document.querySelector(".team-toggle");
+const teamGrid = document.getElementById("team-grid");
 
 document.addEventListener("contextmenu", (event) => {
   event.preventDefault();
@@ -68,6 +70,59 @@ if (navToggle && primaryNav) {
       navToggle.setAttribute("aria-expanded", "false");
       primaryNav.classList.remove("primary-nav--open");
       document.body.classList.remove("no-scroll");
+    }
+  });
+}
+
+if (teamToggle && teamGrid) {
+  const label = teamToggle.querySelector(".team-toggle__label");
+  const collapsedLabel = teamToggle.dataset.collapsedLabel || "Ver la cuadrilla";
+  const expandedLabel = teamToggle.dataset.expandedLabel || "Ocultar la cuadrilla";
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  let isExpandedOnMobile = false;
+
+  const setMobileState = (expanded) => {
+    isExpandedOnMobile = expanded;
+    teamToggle.setAttribute("aria-expanded", String(expanded));
+    teamGrid.classList.toggle("is-collapsed", !expanded);
+    teamToggle.classList.toggle("team-toggle--collapsed", !expanded);
+
+    if (label) {
+      label.textContent = expanded ? expandedLabel : collapsedLabel;
+    }
+  };
+
+  const applyMobileState = () => {
+    teamToggle.hidden = false;
+    setMobileState(isExpandedOnMobile);
+  };
+
+  const applyDesktopState = () => {
+    teamToggle.hidden = true;
+    teamGrid.classList.remove("is-collapsed");
+    teamToggle.classList.remove("team-toggle--collapsed");
+    teamToggle.setAttribute("aria-expanded", "true");
+
+    if (label) {
+      label.textContent = expandedLabel;
+    }
+  };
+
+  teamToggle.addEventListener("click", () => {
+    setMobileState(!isExpandedOnMobile);
+  });
+
+  if (mobileQuery.matches) {
+    applyMobileState();
+  } else {
+    applyDesktopState();
+  }
+
+  mobileQuery.addEventListener("change", (event) => {
+    if (event.matches) {
+      applyMobileState();
+    } else {
+      applyDesktopState();
     }
   });
 }
