@@ -160,10 +160,60 @@ if (diwoChatbot && diwoChatOpenButton) {
     setDiwoChatVisibility(true);
   });
 
-  if (diwoChatCloseButton) {
-    diwoChatCloseButton.addEventListener("click", () => {
-      setDiwoChatVisibility(false);
+  const focusLauncher = () => {
+    if (typeof diwoChatOpenButton.focus !== "function") {
+      return;
+    }
+
+    try {
+      diwoChatOpenButton.focus({ preventScroll: true });
+    } catch (error) {
       diwoChatOpenButton.focus();
+    }
+  };
+
+  if (diwoChatCloseButton) {
+    let lastCloseTimestamp = 0;
+
+    const closeChat = (event) => {
+      if (event) {
+        event.preventDefault();
+        const now = Date.now();
+        if (event.type === "click" && now - lastCloseTimestamp < 350) {
+          return;
+        }
+        lastCloseTimestamp = now;
+      }
+
+      setDiwoChatVisibility(false);
+      focusLauncher();
+    };
+
+    diwoChatCloseButton.addEventListener("click", closeChat);
+
+    if (window.PointerEvent) {
+      diwoChatCloseButton.addEventListener(
+        "pointerup",
+        (event) => {
+          if (event.pointerType === "touch") {
+            closeChat(event);
+          }
+        },
+        { passive: false }
+      );
+    } else {
+      diwoChatCloseButton.addEventListener(
+        "touchend",
+        closeChat,
+        { passive: false }
+      );
+    }
+
+    diwoChatCloseButton.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        closeChat();
+      }
     });
   }
 
