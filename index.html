@@ -229,8 +229,18 @@
       aria-label="Chatbot ficticio Diwo compartiendo mensajes"
     >
       <header class="diwo-chatbot__header">
-        <span class="diwo-chatbot__avatar" aria-hidden="true">💬</span>
-        <span class="diwo-chatbot__title">Diwo</span>
+        <div class="diwo-chatbot__identity">
+          <span class="diwo-chatbot__avatar" aria-hidden="true">💬</span>
+          <span class="diwo-chatbot__title">Diwo</span>
+        </div>
+        <button
+          type="button"
+          id="diwo-chat-close"
+          class="diwo-chatbot__close"
+          aria-label="Cerrar chat Diwo"
+        >
+          ×
+        </button>
       </header>
       <div
         class="diwo-chatbot__body"
@@ -257,6 +267,17 @@
         <button type="submit" class="diwo-chatbot__send">Enviar</button>
       </form>
     </section>
+
+    <button
+      type="button"
+      id="diwo-chat-open"
+      class="diwo-chatbot__launcher"
+      aria-controls="diwo-chatbot"
+      aria-expanded="true"
+      hidden
+    >
+      Habla con Diwo
+    </button>
 
     <script src="script.js"></script>
   </body>
