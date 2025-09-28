@@ -1,8 +1,56 @@
 const quizApp = document.querySelector("#quiz-app");
 const yearSpan = document.getElementById("current-year");
+const navToggle = document.querySelector(".nav-toggle");
+const primaryNav = document.getElementById("primary-nav");
 
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
+}
+
+if (navToggle && primaryNav) {
+  const closeMenu = () => {
+    navToggle.setAttribute("aria-expanded", "false");
+    primaryNav.classList.remove("primary-nav--open");
+    document.body.classList.remove("no-scroll");
+  };
+
+  const openMenu = () => {
+    navToggle.setAttribute("aria-expanded", "true");
+    primaryNav.classList.add("primary-nav--open");
+    document.body.classList.add("no-scroll");
+  };
+
+  navToggle.addEventListener("click", () => {
+    const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  primaryNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (navToggle.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+      }
+    });
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+      navToggle.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      navToggle.setAttribute("aria-expanded", "false");
+      primaryNav.classList.remove("primary-nav--open");
+      document.body.classList.remove("no-scroll");
+    }
+  });
 }
 
 const diwoMessagesList = document.getElementById("diwo-messages");
