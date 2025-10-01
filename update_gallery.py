@@ -25,6 +25,22 @@ DESCRIPTIONS = [
     },
 ]
 
+NEW_IMAGE_BASE64 = (
+    "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAKklEQVR4nGP8/5+BFMRAKYAJRgZG"
+    "QJYJxiqGiTECD2QkGqiCgwEAGmAFCxh4GGgAAAAASUVORK5CYII="
+)
+
+EXTRA_ITEMS = [
+    {
+        "alt": "Pixel art del jefe surfeando el caos corporativo en una tabla de informes.",
+        "caption": (
+            "Recreación oficial del simulacro de emergencia: el jefe montado en una tabla de "
+            "Excel mientras grita '¡que nadie cierre el trimestre!'."
+        ),
+        "data_uri": f"data:image/png;base64,{NEW_IMAGE_BASE64}",
+    }
+]
+
 def detect_mime(path: Path) -> str:
     detected = imghdr.what(path)
     if detected == "jpeg":
@@ -49,6 +65,13 @@ def build_figures(images: list[Path]) -> str:
             "            <figure class=\"gallery-item\">\n"
             f"              <img src=\"{data_uri}\" alt=\"{description['alt']}\" />\n"
             f"              <span>{description['caption']}</span>\n"
+            "            </figure>"
+        )
+    for extra in EXTRA_ITEMS:
+        figure_blocks.append(
+            "            <figure class=\"gallery-item\">\n"
+            f"              <img src=\"{extra['data_uri']}\" alt=\"{extra['alt']}\" />\n"
+            f"              <span>{extra['caption']}</span>\n"
             "            </figure>"
         )
     return "\n".join(figure_blocks)
@@ -90,7 +113,8 @@ def main() -> None:
     figures_markup = build_figures(images[: len(DESCRIPTIONS)])
     update_gallery_html(figures_markup)
 
-    print("Galería actualizada con", len(DESCRIPTIONS), "imágenes en base64.")
+    total_items = len(DESCRIPTIONS) + len(EXTRA_ITEMS)
+    print("Galería actualizada con", total_items, "imágenes en base64.")
 
 
 if __name__ == "__main__":
