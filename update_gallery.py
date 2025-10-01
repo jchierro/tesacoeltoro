@@ -12,16 +12,28 @@ ATTACHMENTS_DIR = Path("/tmp/user_uploaded_attachments")
 
 DESCRIPTIONS = [
     {
-        "alt": "Hombre desayunando mientras sostiene una paloma sobre la taza de café.",
-        "caption": "Reunión creativa con la nueva consultora alada del departamento de marketing.",
+        "alt": "Rome desayunando en una terraza mientras sostiene una paloma.",
+        "caption": "Rome negocia con la paloma barista para conseguir café infinito y wifi en la terraza.",
     },
     {
-        "alt": "Empleado lanzando un avión de papel desde una ventana de oficina.",
-        "caption": "Presentación trimestral resumida en avión: KPIs volando directo al cliente.",
+        "alt": "Rome preparando un avión de papel desde la ventana de una oficina moderna.",
+        "caption": "Rome lanza el informe trimestral en avión de papel para ahorrar en presentaciones de PowerPoint.",
     },
     {
-        "alt": "Persona recostada dentro de un ataúd durante un ensayo.",
-        "caption": "Simulacro de siesta eterna para evaluar la comodidad del ataúd VIP con climatizador.",
+        "alt": "Rome recostado dentro de un ataúd durante un ensayo teatral.",
+        "caption": "Rome prueba la siesta eterna premium antes de firmar el contrato con la funeraria boutique.",
+    },
+    {
+        "alt": "Rome dormido en el asiento trasero de un coche con el cinturón abrochado.",
+        "caption": "Rome activa el modo avión humano y se queda dormido antes de que el GPS diga recalculando.",
+    },
+    {
+        "alt": "Rome en silla de ruedas con la pierna escayolada acompañado a la salida de un hospital.",
+        "caption": "Rome presume de escayola con purpurina tras intentar torear una impresora 3D industrial.",
+    },
+    {
+        "alt": "Rome vestido de torero posando en la plaza junto a una amiga.",
+        "caption": "Rome luce traje de luces justo antes de torear la reunión anual de recursos humanos.",
     },
 ]
 
