@@ -4,26 +4,64 @@ from __future__ import annotations
 import base64
 import imghdr
 import re
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
 INDEX_PATH = REPO_ROOT / "index.html"
 ATTACHMENTS_DIR = Path("/tmp/user_uploaded_attachments")
 
-DESCRIPTIONS = [
-    {
-        "alt": "Hombre desayunando mientras sostiene una paloma sobre la taza de café.",
-        "caption": "Reunión creativa con la nueva consultora alada del departamento de marketing.",
-    },
-    {
-        "alt": "Empleado lanzando un avión de papel desde una ventana de oficina.",
-        "caption": "Presentación trimestral resumida en avión: KPIs volando directo al cliente.",
-    },
-    {
-        "alt": "Persona recostada dentro de un ataúd durante un ensayo.",
-        "caption": "Simulacro de siesta eterna para evaluar la comodidad del ataúd VIP con climatizador.",
-    },
-]
+
+@dataclass
+class GalleryItem:
+    alt: str
+    caption: str
+    data_uri: str
+
+
+NEW_IMAGE_BASE64 = (
+    "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAKklEQVR4nGP8/5+BFMRAKYAJRgZG"
+    "QJYJxiqGiTECD2QkGqiCgwEAGmAFCxh4GGgAAAAASUVORK5CYII="
+)
+
+NEW_IMAGE_ITEM = GalleryItem(
+    alt="Pixel art del jefe surfeando el caos corporativo en una tabla de informes.",
+    caption=(
+        "Recreación oficial del simulacro de emergencia: el jefe montado en una tabla de"
+        " Excel mientras grita '¡que nadie cierre el trimestre!'."
+    ),
+    data_uri=f"data:image/png;base64,{NEW_IMAGE_BASE64}",
+)
+
+ATTACHMENT_METADATA = {
+    "image_1": GalleryItem(
+        alt=(
+            "Empleado dormido en el asiento trasero del coche con el cinturón puesto y"
+            " la cara pegada a una almohada improvisada."
+        ),
+        caption=(
+            "Prueba piloto del nuevo servicio 'siesta express' para comerciales que"
+            " cierran acuerdos incluso mientras roncan."
+        ),
+        data_uri="",
+    ),
+}
+
+
+def create_attachment_item(path: Path, index: int) -> GalleryItem:
+    key = path.stem
+    base_item = ATTACHMENT_METADATA.get(
+        key,
+        GalleryItem(
+            alt=f"Documento oficial de la hazaña {index} en pleno esplendor pixelado.",
+            caption=(
+                "El departamento de comunicación insiste en que esta foto resume la"
+                f" jornada {index}: caos elegante y sonrisas en modo riesgo controlado."
+            ),
+            data_uri="",
+        ),
+    )
+    return replace(base_item, data_uri=image_to_data_uri(path))
 
 def detect_mime(path: Path) -> str:
     detected = imghdr.what(path)
@@ -41,14 +79,13 @@ def image_to_data_uri(path: Path) -> str:
     return f"data:{mime};base64,{encoded}"
 
 
-def build_figures(images: list[Path]) -> str:
+def build_figures(items: list[GalleryItem]) -> str:
     figure_blocks: list[str] = []
-    for image_path, description in zip(images, DESCRIPTIONS):
-        data_uri = image_to_data_uri(image_path)
+    for item in items:
         figure_blocks.append(
             "            <figure class=\"gallery-item\">\n"
-            f"              <img src=\"{data_uri}\" alt=\"{description['alt']}\" />\n"
-            f"              <span>{description['caption']}</span>\n"
+            f"              <img src=\"{item.data_uri}\" alt=\"{item.alt}\" />\n"
+            f"              <span>{item.caption}</span>\n"
             "            </figure>"
         )
     return "\n".join(figure_blocks)
@@ -81,16 +118,24 @@ def main() -> None:
             f"No se encontró la carpeta de adjuntos en {ATTACHMENTS_DIR}."
         )
 
-    images = sorted(ATTACHMENTS_DIR.glob("*"))
-    if len(images) < len(DESCRIPTIONS):
-        raise ValueError(
-            "No hay suficientes imágenes adjuntas para completar la galería."
-        )
+    attachment_paths = sorted(ATTACHMENTS_DIR.glob("*"))
+    if not attachment_paths:
+        raise ValueError("No se encontraron imágenes adjuntas para convertir.")
 
-    figures_markup = build_figures(images[: len(DESCRIPTIONS)])
+    gallery_items = [
+        create_attachment_item(path, index)
+        for index, path in enumerate(attachment_paths, start=1)
+    ]
+    gallery_items.append(NEW_IMAGE_ITEM)
+
+    figures_markup = build_figures(gallery_items)
     update_gallery_html(figures_markup)
 
-    print("Galería actualizada con", len(DESCRIPTIONS), "imágenes en base64.")
+    print(
+        "Galería actualizada con",
+        len(gallery_items),
+        "imágenes convertidas/injectadas en base64.",
+    )
 
 
 if __name__ == "__main__":
