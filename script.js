@@ -254,6 +254,8 @@ if (diwoMessagesList) {
     "15 instalaciones de Emooc",
     "buen curro",
     "nowena",
+    "docker dentro de docker",
+    "un colacalo?"
   ];
 
   let currentMessageIndex = 0;
