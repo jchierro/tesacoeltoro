@@ -365,7 +365,7 @@ section {
   transition: transform 0.3s ease;
 }
 
-.gallery-item span {
+.gallery-item figcaption {
   position: absolute;
   bottom: 0;
   left: 0;

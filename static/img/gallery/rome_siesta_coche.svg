@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#fff9c4"/>
+  <rect x="120" y="200" width="360" height="120" rx="40" fill="#90caf9" stroke="#0d47a1" stroke-width="10"/>
+  <circle cx="200" cy="340" r="32" fill="#0d47a1"/>
+  <circle cx="400" cy="340" r="32" fill="#0d47a1"/>
+  <path d="M240 200 Q300 120 360 200" fill="#0d47a1"/>
+  <text x="300" y="140" font-family="'Montserrat', Arial, sans-serif" font-size="40" text-anchor="middle" fill="#f57f17">Rome duerme la siesta en su coche</text>
+</svg>
