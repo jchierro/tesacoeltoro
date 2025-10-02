@@ -311,6 +311,19 @@ section {
   margin-bottom: 2rem;
 }
 
+.crew-photo {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.crew-photo-img {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 18px 36px rgba(26, 26, 26, 0.18);
+}
+
 .card-grid {
   display: grid;
   gap: 1.5rem;
