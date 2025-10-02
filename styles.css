@@ -356,6 +356,7 @@ section {
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 15px 25px rgba(26, 26, 26, 0.15);
+  min-height: 350px;
 }
 
 .gallery-item img {
