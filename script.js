@@ -464,7 +464,7 @@ if (quizApp) {
         <p class="secret-date__details">
           La despedida de Rome se celebra el <strong>1 de noviembre</strong>.
         </p>
-        <p class="secret-date__details">Tendras preparado un traje de luces.</p>
+        <p class="secret-date__details">Tendrás preparado un traje de luces.</p>
         <div aria-hidden="true" class="confetti confetti--reverse">✨🎺🎉</div>
       </div>
     `;
