@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9ad0ff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <path d="M120 230 L300 140 L480 230 L360 210 L300 260 L240 210 Z" fill="#f7f7f7" stroke="#3a6ea5" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="300" cy="260" r="12" fill="#3a6ea5"/>
+  <text x="300" y="340" font-family="'Montserrat', Arial, sans-serif" font-size="42" text-anchor="middle" fill="#27496d">Rome lanza su avión de papel</text>
+</svg>

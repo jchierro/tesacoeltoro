@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#fbe9e7"/>
+  <path d="M180 220 C210 160 270 140 300 200 C330 140 390 160 420 220 C420 320 300 340 300 340 C300 340 180 320 180 220 Z" fill="#ffffff" stroke="#d2691e" stroke-width="6"/>
+  <path d="M260 260 C260 240 280 220 300 220 C320 220 340 240 340 260" fill="#f5deb3"/>
+  <rect x="260" y="260" width="80" height="70" rx="12" fill="#6d4c41"/>
+  <text x="300" y="120" font-family="'Montserrat', Arial, sans-serif" font-size="40" text-anchor="middle" fill="#6d4c41">Rome comparte café con Paloma</text>
+</svg>

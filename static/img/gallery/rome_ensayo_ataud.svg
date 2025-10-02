@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#1f1f1f"/>
+  <rect x="120" y="80" width="360" height="240" rx="40" fill="#3c2f2f" stroke="#9e7c4f" stroke-width="8"/>
+  <rect x="160" y="120" width="280" height="160" rx="28" fill="#5c4536"/>
+  <circle cx="300" cy="200" r="48" fill="#f4d35e"/>
+  <path d="M260 210 L300 170 L340 210" fill="none" stroke="#1f1f1f" stroke-width="8" stroke-linecap="round"/>
+  <text x="300" y="340" font-family="'Montserrat', Arial, sans-serif" font-size="40" text-anchor="middle" fill="#f4d35e">Rome ensaya su salida del ataúd</text>
+</svg>
